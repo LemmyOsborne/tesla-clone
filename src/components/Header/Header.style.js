@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
+
+
 export const Container = styled.div`
+    top: 0;
+    left: 0;
+    right: 0;
     min-height: 60px;
     position: fixed;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
-    top: 0;
-    left: 0;
-    right: 0;
+    z-index: 1;
+    
 `
 
 export const Menu = styled.div`
@@ -18,16 +23,88 @@ export const Menu = styled.div`
     flex: 1;
 
     a {
-        font-weight: 600;
-        text-transform: uppercase;
-        padding: 0 10px;
+        background-color: transparent;
+        border-radius: 12px;
+        padding: 8px 12px;
+        transition: background-color ease .33s;
+        &:hover {
+            background-color: hsla(0,0%,0%,.05);
+        }
+    }
+
+    @media (max-width: 1200px) {
+        display: none;
     }
 `
 
 export const RightMenu = styled.div`
+    display: flex;
+    align-items: center;
+   
+   
+    @media (max-width: 1200px) {
+        display: none;
+    }
+ }
+   
+`
+
+export const Button = styled.button`
+    margin-right: 10px;
+    padding: 8px 12px;
+    background-color: transparent;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color ease .33s;
+    &:hover {
+        background-color: hsla(0,0%,0%,.05);
+    }
+
+    @media (max-width: 1200px) {
+        background-color: hsla(0,0%,0%,.05);
+    }
+`
+
+export const CustomMenu = styled(Button)``
+
+export const BurgerNav = styled.div`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 290px;
+    background-color: white;
+    padding: 4rem 2rem;
+    transform: ${({show}) => show ? "translateX(0);" : "translateX(100%);"}
+    transition: transform .3s ease-in;
+
     a {
-        font-weight: 600;
-        text-transform: uppercase;
-        margin-right: 10px;
+        display: block;
+        background-color: transparent;
+        border-radius: 12px;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        transition: background-color ease .33s;
+        
+        &:hover {
+            background-color: hsla(0,0%,0%,.05);
+        }
+    }
+`
+
+export const CloseButton = styled.button`
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    padding: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    position: relative;
+    left: 8rem;
+
+    &:hover {
+        background-color: hsla(0,0%,0%,.05);
     }
 `

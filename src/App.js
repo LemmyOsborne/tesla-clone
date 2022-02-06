@@ -1,15 +1,19 @@
 import React from 'react';
-import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
+import { Routes, Route } from "react-router-dom";
+import { ModelY } from "./components/cars/ModelY/ModelY";
+import { Layout } from "./components/Layout/Layout"
 
 
 
 function App() {
   return (
-    <div>
-      <Header/>
-      <Home/>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home/>} />
+        <Route path="/model-y" element={<ModelY />} />
+      </Route>
+    </Routes>
   );
 }
 
