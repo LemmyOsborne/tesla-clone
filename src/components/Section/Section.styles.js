@@ -21,6 +21,7 @@ export const TextItem = styled.div`
 export const Title = styled.h1`
     margin: 0;
     font-size: 45px;
+    font-weight: 500;
 
     @media (max-width: 600px) {
         font-size: 35px

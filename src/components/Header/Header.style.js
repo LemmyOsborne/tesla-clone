@@ -13,7 +13,6 @@ export const Container = styled.div`
     justify-content: space-between;
     padding: 0 20px;
     z-index: 1;
-    
 `
 
 export const Menu = styled.div`
@@ -23,6 +22,7 @@ export const Menu = styled.div`
     flex: 1;
 
     a {
+        font-weight: 500;
         background-color: transparent;
         border-radius: 12px;
         padding: 8px 12px;
@@ -50,6 +50,7 @@ export const RightMenu = styled.div`
 `
 
 export const Button = styled.button`
+    font-weight: 500;
     margin-right: 10px;
     padding: 8px 12px;
     background-color: transparent;

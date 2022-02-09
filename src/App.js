@@ -1,8 +1,9 @@
 import React from 'react';
 import { Home } from './components/Home/Home';
 import { Routes, Route } from "react-router-dom";
-import { ModelY } from "./components/cars/ModelY/ModelY";
-import { Layout } from "./components/Layout/Layout"
+import { Car } from "./components/cars/Car/Car";
+import { Layout } from "./components/Layout/Layout";
+import carInfo from "./carInfo.json"
 
 
 
@@ -11,10 +12,12 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home/>} />
-        <Route path="/model-y" element={<ModelY />} />
+        {carInfo.map(item => (
+          <Route path={item.path} element={<Car key={item.id} {...item} />} />
+        ))}
       </Route>
     </Routes>
-  );
+  )
 }
 
 export default App;

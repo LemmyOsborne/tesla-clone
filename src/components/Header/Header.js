@@ -13,10 +13,10 @@ export const Header = () => {
         <img src="/images/logo.svg" alt="logo" />
       </NavLink>
       <Menu>
-        <NavLink to="">Model S</NavLink>
-        <NavLink to="">Model 3</NavLink>
+        <NavLink to="/model-s">Model S</NavLink>
+        <NavLink to="/model-3">Model 3</NavLink>
         <NavLink to="/model-y">Model Y</NavLink>
-        <NavLink to="">Model X</NavLink>
+        <NavLink to="/model-x">Model X</NavLink>
         <NavLink to="">Solar Roof</NavLink>
         <NavLink to="">Solar Panel</NavLink>
       </Menu>
