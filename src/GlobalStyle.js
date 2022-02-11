@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     body {
-        font-family: "Roboto", sans-serif;
-        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
         width: 100%;
         overflow-x: hidden;
     }

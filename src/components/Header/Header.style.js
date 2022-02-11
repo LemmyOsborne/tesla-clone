@@ -13,6 +13,8 @@ export const Container = styled.div`
     justify-content: space-between;
     padding: 0 20px;
     z-index: 1;
+    color: ${({ color }) => `${color}`};
+    font-weight: 600;
 `
 
 export const Menu = styled.div`
@@ -20,15 +22,21 @@ export const Menu = styled.div`
     align-items: center;
     justify-content: center;
     flex: 1;
+    
 
     a {
-        font-weight: 500;
+        font-weight: inherit;
         background-color: transparent;
         border-radius: 12px;
         padding: 8px 12px;
         transition: background-color ease .33s;
+        color: inherit;
+        
         &:hover {
-            background-color: hsla(0,0%,0%,.05);
+            ${({ bgDefault }) => bgDefault
+            ? `background-color: hsla(0,0%,0%,.05);`
+            : `background-color: hsla(0,0%,100%,.2);
+            backdrop-filter: blur(16px);`} 
         }
     }
 
@@ -40,7 +48,7 @@ export const Menu = styled.div`
 export const RightMenu = styled.div`
     display: flex;
     align-items: center;
-   
+    
    
     @media (max-width: 1200px) {
         display: none;
@@ -50,7 +58,7 @@ export const RightMenu = styled.div`
 `
 
 export const Button = styled.button`
-    font-weight: 500;
+    font-weight: inherit;
     margin-right: 10px;
     padding: 8px 12px;
     background-color: transparent;
@@ -58,12 +66,18 @@ export const Button = styled.button`
     border: none;
     cursor: pointer;
     transition: background-color ease .33s;
+    color: inherit;
+    
     &:hover {
-        background-color: hsla(0,0%,0%,.05);
+        ${({ bgDefault }) => bgDefault
+            ? `background-color: hsla(0,0%,0%,.05);`
+            : `background-color: hsla(0,0%,100%,.2);
+            backdrop-filter: blur(16px);`}
     }
 
     @media (max-width: 1200px) {
-        background-color: hsla(0,0%,0%,.05);
+        background-color: hsla(0,0%,100%,.2);
+        backdrop-filter: blur(16px);
     }
 `
 
@@ -77,7 +91,7 @@ export const BurgerNav = styled.div`
     width: 290px;
     background-color: white;
     padding: 4rem 2rem;
-    transform: ${({show}) => show ? "translateX(0);" : "translateX(100%);"}
+    transform: ${({ show }) => show ? "translateX(0);" : "translateX(100%);"}
     transition: transform .3s ease-in;
 
     a {
@@ -87,6 +101,7 @@ export const BurgerNav = styled.div`
         padding: 8px 12px;
         margin-bottom: 8px;
         transition: background-color ease .33s;
+        opacity: 0.85;
         
         &:hover {
             background-color: hsla(0,0%,0%,.05);

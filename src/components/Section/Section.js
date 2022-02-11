@@ -1,6 +1,7 @@
 import React from 'react';
-import { Wrapper, TextItem, Title, Subtitle, ButtonGroup, LeftButton, RightButton, DownArrow, Buttons } from './Section.styles';
+import { Wrapper, TextItem, Title, Subtitle, ButtonGroup, LeftButton, RightButton, Buttons } from './Section.styles';
 import { Fade } from "react-awesome-reveal";
+import { DownArrow } from "../common/DownArrow"
 
 
 export const Section = ({ title, description, image, leftBtn, rightBtn }) => {
@@ -15,16 +16,20 @@ export const Section = ({ title, description, image, leftBtn, rightBtn }) => {
             <Fade>
                 <Buttons>
                     <ButtonGroup>
-                        <LeftButton>
-                            {leftBtn}
-                        </LeftButton>
+                        {title === "Accessories"
+                            ? <LeftButton opacity={1}>
+                                {leftBtn}
+                            </LeftButton>
+                            : <LeftButton>
+                                {leftBtn}
+                            </LeftButton>}
                         {rightBtn &&
                             <RightButton>
                                 {rightBtn}
                             </RightButton>
                         }
                     </ButtonGroup>
-                    <DownArrow src="/images/down-arrow.svg" />
+                    <DownArrow />
                 </Buttons>
             </Fade>
         </Wrapper>

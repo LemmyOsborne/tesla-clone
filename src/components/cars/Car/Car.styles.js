@@ -18,7 +18,7 @@ export const Container = styled.div`
         font-size: 45px;
         letter-spacing: 1px;
         font-weight: 500;
-        opacity: 0.8;
+        opacity: 0.9;
     }
 `
 
@@ -43,13 +43,23 @@ export const SpecificationsItem = styled.div`
 
     h2 {
         font-size: 28px;
-        letter-spacing: 1px;
         white-space: nowrap;
     }
 
     p {
         font-size: 14px;
         font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+        h2 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 10px;
+        }
     }
 `
 

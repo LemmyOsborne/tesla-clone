@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import { Car } from "./components/cars/Car/Car";
 import { Layout } from "./components/Layout/Layout";
 import carInfo from "./carInfo.json"
+import { SolarRoof } from './components/SolarRoof/SolarRoof';
+import { SolarPanels } from './components/SolarPanels/SolarPanels';
 
 
 
@@ -13,9 +15,12 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home/>} />
         {carInfo.map(item => (
-          <Route path={item.path} element={<Car key={item.id} {...item} />} />
+          <Route path={item.path} key={item.id} element={<Car {...item} />} />
         ))}
+        <Route path="/solarroof" element={<SolarRoof />} />
+        <Route path="/solarpanels" element={<SolarPanels />} />
       </Route>
+      
     </Routes>
   )
 }

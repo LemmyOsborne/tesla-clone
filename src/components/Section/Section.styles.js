@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 export const TextItem = styled.div`
     padding-top: 15vh;
     text-align: center;
-    opacity: 0.7
+    opacity: 0.75;
 `
 
 export const Title = styled.h1`
@@ -52,23 +52,18 @@ export const LeftButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0.8;
+    opacity: ${({ opacity = 0.8 }) => `${opacity}`};
     text-transform: uppercase;
     font-size: 12px;
     cursor: pointer;
     margin: 8px;
+    font-weight: 500;
 `
 
 export const RightButton = styled(LeftButton)`
     background-color: #fff;
     color: #000;
     opacity: 0.65;
-`
-
-export const DownArrow = styled.img`
-    margin-top: 20px;
-    height: 40px;
-    animation: animateDown infinite 1.5s;
 `
 
 export const Buttons = styled.div`
