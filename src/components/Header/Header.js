@@ -1,96 +1,57 @@
 import React, { useState } from 'react';
-import { Container, Menu, RightMenu, CustomMenu, Button, BurgerNav, CloseButton } from './Header.style';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Container, Menu, RightMenu, ButtonMenu, BurgerNav, CloseButton, CustomLink } from './Header.style';
 
 
 
-export const Header = () => {
+
+export const Header = ({ color, bgdefault }) => {
   const [toggleBurgerNav, setToggleBurgerNav] = useState(false)
-  const { pathname } = useLocation()
 
   return (
-    <>
-      {["/", "/model-s", "/model-x", "/solarpanels"].includes(pathname)
-        ? <Container color="black">
-          <NavLink to="/">
-            <img src="/images/logo.svg" alt="logo" />
-          </NavLink>
-          <Menu bgDefault>
-            <NavLink to="/model-s">Model S</NavLink>
-            <NavLink to="/model-3">Model 3</NavLink>
-            <NavLink to="/model-y">Model Y</NavLink>
-            <NavLink to="/model-x">Model X</NavLink>
-            <NavLink to="/solarroof">Solar Roof</NavLink>
-            <NavLink to="/solarpanels">Solar Panel</NavLink>
-          </Menu>
-          <RightMenu>
-            <Button bgDefault>Shop</Button>
-            <Button bgDefault>Account</Button>
-          </RightMenu>
-          <CustomMenu bgDefault onClick={() => setToggleBurgerNav(true)}>Menu</CustomMenu>
-          <BurgerNav show={toggleBurgerNav}>
-            <CloseButton onClick={() => setToggleBurgerNav(false)}>Close</CloseButton>
-            <NavLink to="/model-s">Model S</NavLink>
-            <NavLink to="/model-3">Model 3</NavLink>
-            <NavLink to="/model-y">Model Y</NavLink>
-            <NavLink to="/model-x">Model X</NavLink>
-            <NavLink to="/solarroof">Solar Roof</NavLink>
-            <NavLink to="/solarpanels">Solar Panel</NavLink>
-            <NavLink to="#">Existing Inventory</NavLink>
-            <NavLink to="#">Used Inventory</NavLink>
-            <NavLink to="#">Trade-In</NavLink>
-            <NavLink to="#">Test Drive</NavLink>
-            <NavLink to="#">Cybertruck</NavLink>
-            <NavLink to="#">Roadster</NavLink>
-            <NavLink to="#">Semi</NavLink>
-            <NavLink to="#">Charging</NavLink>
-            <NavLink to="#">Powerwall</NavLink>
-            <NavLink to="#">Commercial Energy</NavLink>
-            <NavLink to="#">Utilities</NavLink>
-            <NavLink to="#">Find Us</NavLink>
-            <NavLink to="#">Investor Relations</NavLink>
-          </BurgerNav>
-        </Container >
-        : <Container color="white">
-          <NavLink to="/">
-            <img src="/images/logo-white.svg" alt="logo" />
-          </NavLink>
-          <Menu>
-            <NavLink to="/model-s">Model S</NavLink>
-            <NavLink to="/model-3">Model 3</NavLink>
-            <NavLink to="/model-y">Model Y</NavLink>
-            <NavLink to="/model-x">Model X</NavLink>
-            <NavLink to="/solarroof">Solar Roof</NavLink>
-            <NavLink to="/solarpanel">Solar Panel</NavLink>
-          </Menu>
-          <RightMenu>
-            <Button>Shop</Button>
-            <Button>Account</Button>
-          </RightMenu>
-          <CustomMenu onClick={() => setToggleBurgerNav(true)}>Menu</CustomMenu>
-          <BurgerNav show={toggleBurgerNav}>
-            <CloseButton onClick={() => setToggleBurgerNav(false)}>Close</CloseButton>
-            <NavLink to="/model-s">Model S</NavLink>
-            <NavLink to="/model-3">Model 3</NavLink>
-            <NavLink to="/model-y">Model Y</NavLink>
-            <NavLink to="/model-x">Model X</NavLink>
-            <NavLink to="/solarroof">Solar Roof</NavLink>
-            <NavLink to="/solarpanels">Solar Panel</NavLink>
-            <NavLink to="#">Existing Inventory</NavLink>
-            <NavLink to="#">Used Inventory</NavLink>
-            <NavLink to="#">Trade-In</NavLink>
-            <NavLink to="#">Test Drive</NavLink>
-            <NavLink to="#">Cybertruck</NavLink>
-            <NavLink to="#">Roadster</NavLink>
-            <NavLink to="#">Semi</NavLink>
-            <NavLink to="#">Charging</NavLink>
-            <NavLink to="#">Powerwall</NavLink>
-            <NavLink to="#">Commercial Energy</NavLink>
-            <NavLink to="#">Utilities</NavLink>
-            <NavLink to="#">Find Us</NavLink>
-            <NavLink to="#">Investor Relations</NavLink>
-          </BurgerNav>
-        </Container >}
-    </>
+    <Container color={color}>
+      {color === "black"
+        ? <CustomLink to="/">
+          <img src="/images/logo.svg" alt="logo" />
+        </CustomLink>
+        : <CustomLink to="/">
+          <img src="/images/logo-white.svg" alt="logo" />
+        </CustomLink>
+      }
+      <Menu>
+        <CustomLink bgdefault={bgdefault} to="/model-s">Model S</CustomLink>
+        <CustomLink bgdefault={bgdefault} to="/model-3">Model 3</CustomLink>
+        <CustomLink bgdefault={bgdefault} to="/model-y">Model Y</CustomLink>
+        <CustomLink bgdefault={bgdefault} to="/model-x">Model X</CustomLink>
+        <CustomLink bgdefault={bgdefault} to="/solarroof">Solar Roof</CustomLink>
+        <CustomLink bgdefault={bgdefault} to="/solarpanels">Solar Panel</CustomLink>
+      </Menu>
+      <RightMenu>
+        <CustomLink bgdefault={bgdefault} to="#">Shop</CustomLink>
+        <CustomLink bgdefault={bgdefault} to="/login">Account</CustomLink>
+      </RightMenu>
+      <ButtonMenu bgdefault={bgdefault} onClick={() => setToggleBurgerNav(true)}>Menu</ButtonMenu>
+      <BurgerNav show={toggleBurgerNav}>
+        <CloseButton onClick={() => setToggleBurgerNav(false)}>Close</CloseButton>
+        <CustomLink to="/model-s">Model S</CustomLink>
+        <CustomLink to="/model-3">Model 3</CustomLink>
+        <CustomLink to="/model-y">Model Y</CustomLink>
+        <CustomLink to="/model-x">Model X</CustomLink>
+        <CustomLink to="/solarroof">Solar Roof</CustomLink>
+        <CustomLink to="/solarpanels">Solar Panel</CustomLink>
+        <CustomLink to="#">Existing Inventory</CustomLink>
+        <CustomLink to="#">Used Inventory</CustomLink>
+        <CustomLink to="#">Trade-In</CustomLink>
+        <CustomLink to="#">Test Drive</CustomLink>
+        <CustomLink to="#">Cybertruck</CustomLink>
+        <CustomLink to="#">Roadster</CustomLink>
+        <CustomLink to="#">Semi</CustomLink>
+        <CustomLink to="#">Charging</CustomLink>
+        <CustomLink to="#">Powerwall</CustomLink>
+        <CustomLink to="#">Commercial Energy</CustomLink>
+        <CustomLink to="#">Utilities</CustomLink>
+        <CustomLink to="#">Find Us</CustomLink>
+        <CustomLink to="#">Investor Relations</CustomLink>
+      </BurgerNav>
+    </Container >
   )
 }

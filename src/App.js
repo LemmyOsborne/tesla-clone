@@ -6,6 +6,7 @@ import { Layout } from "./components/Layout/Layout";
 import carInfo from "./carInfo.json"
 import { SolarRoof } from './components/SolarRoof/SolarRoof';
 import { SolarPanels } from './components/SolarPanels/SolarPanels';
+import { Login } from "./components/Login/Login"
 
 
 
@@ -20,7 +21,7 @@ function App() {
         <Route path="/solarroof" element={<SolarRoof />} />
         <Route path="/solarpanels" element={<SolarPanels />} />
       </Route>
-      
+      <Route path="/login" element={<Login />} />
     </Routes>
   )
 }
