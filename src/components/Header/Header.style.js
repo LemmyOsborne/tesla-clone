@@ -89,6 +89,7 @@ export const BurgerNav = styled.div`
     padding: 4rem 2rem;
     transform: ${({ show }) => show ? "translateX(0);" : "translateX(100%);"};
     transition: transform .3s ease-in;
+    overflow-y: auto;
 
     a {
         display: block;

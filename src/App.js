@@ -1,16 +1,22 @@
 import React from 'react';
 import { Home } from './components/Home/Home';
-import { Routes, Route } from "react-router-dom";
-import { Car } from "./components/cars/Car/Car";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { Car } from "./components/Car/Car";
 import { Layout } from "./components/Layout/Layout";
 import carInfo from "./carInfo.json"
 import { SolarRoof } from './components/SolarRoof/SolarRoof';
 import { SolarPanels } from './components/SolarPanels/SolarPanels';
-import { Login } from "./components/Login/Login"
+import { Login } from "./components/Login/Login";
+import { useSelector } from "react-redux";
+import { selectUser } from "./store/userSlise";
+import { CreateAccount } from "./components/Login/CreateAccount";
+import { TeslaAccount } from "./components/TeslaAccount/TeslaAccount"
 
 
 
 function App() {
+  const user = useSelector(selectUser)
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -20,10 +26,12 @@ function App() {
         ))}
         <Route path="/solarroof" element={<SolarRoof />} />
         <Route path="/solarpanels" element={<SolarPanels />} />
+        <Route path="/teslaaccount" element={<TeslaAccount />} />
       </Route>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={user ? <Navigate to="/teslaaccount"/> : <Login />} />
+      <Route path="/createaccount" element={user ? <Navigate to="/teslaaccount"/> : <CreateAccount />} />
     </Routes>
   )
 }
 
-export default App;
+export default App

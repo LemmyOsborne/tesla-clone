@@ -1,45 +1,53 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FormWrapper, Wrapper, Form, Input, ButtonPrimary, Label, Header, Error, NeedHelp, Divider, ButtonSecondary, Footer } from "./Login.styles";
+import { FormWrapper, Wrapper, Form, Input, ButtonPrimary, Label, Header, Error, Divider, ButtonSecondary, Footer } from "./Login.styles";
 import { Link } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { login, errorHandler, selectError } from "../../store/userSlise";
-import { useDispatch, useSelector } from "react-redux";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { login } from "../../store/userSlise";
+import { useDispatch } from "react-redux";
 import { app } from "../../firebase";
-import LanguageIcon from '@mui/icons-material/Language';
 
 
 
-export const Login = () => {
+export const CreateAccount = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const dispatch = useDispatch()
-    const authError = useSelector(selectError)
 
 
     const auth = getAuth()
-    const onSubmit = ({ email, password }) => {
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user
-            dispatch(login(user))
-        })
-        .catch((error) => {
-            dispatch(errorHandler(error.message))
-        })
+    const onSubmit = ({ firstName, lastName, email, password }) => {
+        
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user
+                user.displayName = firstName + ' ' + lastName
+                dispatch(login(user))
+            })
+            .catch((error) => {
+                const errorMessage = error.message
+                console.log(errorMessage)
+            })
     }
 
-    
+
+
     return (
         <Wrapper>
             <Header>
                 <Link to="/">
                     <img src="/images/logo.svg" alt="logo" />
                 </Link>
-                <span><LanguageIcon/>en-Us</span>
+                <span>en-Us</span>
             </Header>
             <FormWrapper>
                 <h1>Sign In</h1>
                 <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Label>First Name</Label>
+                    <Input {...register("firstName", { required: true })} />
+                    {errors.firstName && <Error>First Name is required</Error>}
+                    <Label>Last Name</Label>
+                    <Input {...register("lastName", { required: true })} />
+                    {errors.lastName && <Error>Last Name is required</Error>}
                     <Label>Email Address</Label>
                     <Input type="email" {...register("email", {
                         required: true,
@@ -48,20 +56,14 @@ export const Login = () => {
                             message: <Error>Invalid email address</Error>
                         }
                     })} />
-                    {errors.email?.type === "required" && <Error>Email is required</Error> || errors.email?.message}
+                    {(errors.email?.type === "required" && <Error>Email is required</Error>) || errors.email?.message}
                     <Label>Password</Label>
                     <Input type="password" {...register("password", { required: true })} />
                     {errors.password && <Error>Password is required</Error>}
-                    {authError && <Error>User with same email or password doesn't exist</Error>}
-                    <ButtonPrimary type="submit">Sign In</ButtonPrimary>
-                    <NeedHelp>
-                        <p>Forgot email?</p>
-                        <span>|</span>
-                        <p>Forgot password?</p>
-                    </NeedHelp>
+                    <ButtonPrimary type="submit">Create Account</ButtonPrimary>
                 </Form>
                 <Divider>OR</Divider>
-                <ButtonSecondary><a href="/createaccount">Create Account</a></ButtonSecondary>
+                <ButtonSecondary><a href="/login">Sign In</a></ButtonSecondary>
             </FormWrapper>
             <footer>
                 <Footer>

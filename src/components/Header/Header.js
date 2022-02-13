@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Menu, RightMenu, ButtonMenu, BurgerNav, CloseButton, CustomLink } from './Header.style';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -31,7 +32,7 @@ export const Header = ({ color, bgdefault }) => {
       </RightMenu>
       <ButtonMenu bgdefault={bgdefault} onClick={() => setToggleBurgerNav(true)}>Menu</ButtonMenu>
       <BurgerNav show={toggleBurgerNav}>
-        <CloseButton onClick={() => setToggleBurgerNav(false)}>Close</CloseButton>
+        <CloseButton onClick={() => setToggleBurgerNav(false)}><CloseIcon/></CloseButton>
         <CustomLink to="/model-s">Model S</CustomLink>
         <CustomLink to="/model-3">Model 3</CustomLink>
         <CustomLink to="/model-y">Model Y</CustomLink>
@@ -51,6 +52,8 @@ export const Header = ({ color, bgdefault }) => {
         <CustomLink to="#">Utilities</CustomLink>
         <CustomLink to="#">Find Us</CustomLink>
         <CustomLink to="#">Investor Relations</CustomLink>
+        <CustomLink to="#">Shop</CustomLink>
+        <CustomLink to="/login">Account</CustomLink>
       </BurgerNav>
     </Container >
   )

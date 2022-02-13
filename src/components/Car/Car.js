@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Specifications, Button, BottomItems, SpecificationsItem, BottomWrapper } from "./Car.styles";
-import { DownArrow } from "../../common/DownArrow"
+import { DownArrow } from "../common/DownArrow"
 
 
 export const Car = ({ title, image, range, time, topSpeed, peakPower }) => {

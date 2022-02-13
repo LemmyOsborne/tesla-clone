@@ -17,6 +17,8 @@ export const Header = styled.div`
     transition: background-color ease .33s;
 
     span {
+        display: flex;
+        align-items: center;
         font-weight: 600;
         cursor: pointer;
         padding: 10px;
@@ -45,7 +47,6 @@ export const FormWrapper = styled.div`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    height: 40vh;
     justify-content: space-between;
 `
 export const Label = styled.label`
@@ -69,7 +70,7 @@ export const Input = styled.input`
     }
 `
 
-export const Button = styled.button`
+export const ButtonPrimary = styled.button`
     height: 40px;
     border-radius: 32px;
     margin-top: 20px;
@@ -88,9 +89,26 @@ export const Button = styled.button`
     }
 `
 
+export const ButtonSecondary = styled(ButtonPrimary)`
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+
+    a {
+        color: inherit;
+        width: 100%;
+    }
+
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+`
+
 export const Error = styled.span`
     color: #b74134;
     font-weight: 600;
+    margin-top: 10px;
 `
 
 export const NeedHelp = styled.div`
@@ -138,17 +156,6 @@ export const Divider  = styled.span`
     margin: 0 8px;
     background-color: lightgrey;
 }
-`
-
-export const CreateAccountButton = styled(Button)`
-    background-color: white;
-    color: black;
-    border: 3px solid black;
-
-    &:hover {
-        background-color: black;
-        color: white;
-    }
 `
 
 export const Footer = styled.ul`

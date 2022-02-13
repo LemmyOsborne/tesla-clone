@@ -1,6 +1,7 @@
 import React from 'react';
 import { Section } from '../Section/Section';
-import sectionInfo from "../../sectionInfo.json"
+import sectionInfo from "../../sectionInfo.json";
+
 
 
 export const Home = () => {
