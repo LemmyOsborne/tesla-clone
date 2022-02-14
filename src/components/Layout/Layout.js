@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { useLocation } from 'react-router-dom';
-import { Footer } from '../Footer/Footer';
 import styled from "styled-components";
 
 
@@ -16,7 +15,6 @@ export const Layout = () => {
                 : <Header color="white" bgdefault={false} />
             }
             <Outlet />
-            <Footer />
         </Main>
     )
 }

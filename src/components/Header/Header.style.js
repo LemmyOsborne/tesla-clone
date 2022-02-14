@@ -90,6 +90,7 @@ export const BurgerNav = styled.div`
     transform: ${({ show }) => show ? "translateX(0);" : "translateX(100%);"};
     transition: transform .3s ease-in;
     overflow-y: auto;
+    color: black;
 
     a {
         display: block;
