@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 
 export const Wrapper = styled.div`
@@ -89,15 +90,23 @@ export const ButtonPrimary = styled.button`
     }
 `
 
-export const ButtonSecondary = styled(ButtonPrimary)`
+export const ButtonSecondary = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 32px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    transition: background-color .33s ease, color .33s ease;
     background-color: white;
     color: black;
     border: 3px solid black;
 
-    a {
-        color: inherit;
-        width: 100%;
-    }
 
     &:hover {
         background-color: black;

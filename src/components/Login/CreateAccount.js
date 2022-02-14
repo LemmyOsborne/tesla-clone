@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { login } from "../../store/userSlise";
 import { useDispatch } from "react-redux";
 import { app } from "../../firebase";
+import LanguageIcon from '@mui/icons-material/Language';
 
 
 
@@ -16,7 +17,6 @@ export const CreateAccount = () => {
 
     const auth = getAuth()
     const onSubmit = ({ firstName, lastName, email, password }) => {
-        
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user
@@ -31,13 +31,14 @@ export const CreateAccount = () => {
 
 
 
+
     return (
         <Wrapper>
             <Header>
                 <Link to="/">
                     <img src="/images/logo.svg" alt="logo" />
                 </Link>
-                <span>en-Us</span>
+                <span><LanguageIcon sx={{ marginRight: "5px" }} />en-Us</span>
             </Header>
             <FormWrapper>
                 <h1>Sign In</h1>
@@ -63,7 +64,7 @@ export const CreateAccount = () => {
                     <ButtonPrimary type="submit">Create Account</ButtonPrimary>
                 </Form>
                 <Divider>OR</Divider>
-                <ButtonSecondary><a href="/login">Sign In</a></ButtonSecondary>
+                <ButtonSecondary to="/login">Sign In</ButtonSecondary>
             </FormWrapper>
             <footer>
                 <Footer>

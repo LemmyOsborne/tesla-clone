@@ -19,23 +19,24 @@ export const Login = () => {
     const auth = getAuth()
     const onSubmit = ({ email, password }) => {
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user
-            dispatch(login(user))
-        })
-        .catch((error) => {
-            dispatch(errorHandler(error.message))
-        })
+            .then((userCredential) => {
+                const user = userCredential.user
+                dispatch(login(user))
+            })
+            .catch((error) => {
+                dispatch(errorHandler(error.message))
+            })
     }
 
-    
+
+
     return (
         <Wrapper>
             <Header>
                 <Link to="/">
                     <img src="/images/logo.svg" alt="logo" />
                 </Link>
-                <span><LanguageIcon/>en-Us</span>
+                <span><LanguageIcon sx={{ marginRight: "5px" }} />en-Us</span>
             </Header>
             <FormWrapper>
                 <h1>Sign In</h1>
@@ -61,7 +62,7 @@ export const Login = () => {
                     </NeedHelp>
                 </Form>
                 <Divider>OR</Divider>
-                <ButtonSecondary><a href="/createaccount">Create Account</a></ButtonSecondary>
+                <ButtonSecondary to="/createaccount">Create Account</ButtonSecondary>
             </FormWrapper>
             <footer>
                 <Footer>
