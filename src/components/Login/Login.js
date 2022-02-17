@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { login, errorHandler, selectError } from "../../store/userSlise";
 import { useDispatch, useSelector } from "react-redux";
-import { app } from "../../firebase";
 import LanguageIcon from '@mui/icons-material/Language';
 
 
@@ -62,7 +61,7 @@ export const Login = () => {
                     </NeedHelp>
                 </Form>
                 <Divider>OR</Divider>
-                <ButtonSecondary to="/createaccount">Create Account</ButtonSecondary>
+                <ButtonSecondary as={Link} to="/createaccount">Create Account</ButtonSecondary>
             </FormWrapper>
             <footer>
                 <Footer>

@@ -22,13 +22,15 @@ function App() {
 
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         dispatch(login(user))
       } else {
         dispatch(logout())
       }
     })
+
+    return () => unsubscribe()
   }, [dispatch])
 
   return (

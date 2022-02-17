@@ -9,15 +9,22 @@ import LogoutIcon from '@mui/icons-material/LogoutOutlined';
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/userSlise"
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signOut } from "firebase/auth";
+
 
 
 export const Sidebar = ({ closeMenu }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const signOut = () => {
-        dispatch(logout())
-        navigate("/")
+    const signOutHandler = () => {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            dispatch(logout())
+            navigate("/")
+        }).catch((error) => {
+            console.log(error.message)
+        });
     }
 
     return (
@@ -27,7 +34,7 @@ export const Sidebar = ({ closeMenu }) => {
             <SideBarListItem><CreditCardIcon sx={{ marginRight: "20px" }} />Payment Method</SideBarListItem>
             <SideBarListItem><ChargingIcon sx={{ marginRight: "20px" }} />Charging</SideBarListItem>
             <SideBarListItem><ShoppingCartIcon sx={{ marginRight: "20px" }} />Order History</SideBarListItem>
-            <SignOutButton onClick={signOut}><LogoutIcon sx={{ marginRight: "20px" }} />Sign Out</SignOutButton>
+            <SignOutButton onClick={signOutHandler}><LogoutIcon sx={{ marginRight: "20px" }} />Sign Out</SignOutButton>
         </SideBarList>
     )
 }

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Button } from "./Button";
 
 
 export const Wrapper = styled.div`
@@ -71,7 +72,7 @@ export const Input = styled.input`
     }
 `
 
-export const ButtonPrimary = styled.button`
+export const ButtonPrimary = styled(Button)`
     height: 40px;
     border-radius: 32px;
     margin-top: 20px;
@@ -90,11 +91,11 @@ export const ButtonPrimary = styled.button`
     }
 `
 
-export const ButtonSecondary = styled(Link)`
+export const ButtonSecondary = styled(ButtonPrimary)`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    /* height: 40px;
     border-radius: 32px;
     margin-top: 20px;
     cursor: pointer;
@@ -102,7 +103,7 @@ export const ButtonSecondary = styled(Link)`
     text-transform: uppercase;
     font-weight: 600;
     font-size: 12px;
-    transition: background-color .33s ease, color .33s ease;
+    transition: background-color .33s ease, color .33s ease;  */
     background-color: white;
     color: black;
     border: 3px solid black;
