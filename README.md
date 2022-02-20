@@ -27,3 +27,6 @@
 ### React Hook Form
 
 Для работы с формами использовал React Hook Form.
+
+
+![tesla-preview](https://user-images.githubusercontent.com/94695490/154853040-c807856b-b1c6-4136-a3ad-2fd8dabf2a12.png)
